@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.13.2'
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+dependencies {
+    compile 'com.android.support:support-v4:+'
+}
+
+
+apply plugin: 'maven'
+uploadArchives {
+    repositories.mavenDeployer {
+        name = 'preference'
+        repository(url: "file:////Users/kenai/Desktop")
+        pom.version = "0.1.0"
+        pom.artifactId = "kenai"
+        pom.groupId = "cc.kenai.preference"
+        pom.packaging = 'aar'
+    }
+}
